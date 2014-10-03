@@ -1,23 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Article = require('models/article')
+var articlesController = require('controllers/articlesController');
 
-router.get('/new', function(req, res){
-    res.render('articles/new');
-});
-
-router.post('/create', function(req, res){
-    Article.create({
-        title: req.body.title,
-        text: req.body.text
-    }).complete(function(err){
-        if(err){
-            console.log('Error on article creation: ' + err)
-        } else {
-            console.log('Article created')
-            res.redirect('/');
-        }
-    });
-});
+router.get('/new', articlesController.new);
+router.post('/create', articlesController.create);
 
 module.exports = router;

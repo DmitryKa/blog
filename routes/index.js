@@ -1,19 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Article = require('models/article')
+var rootController = require('controllers/rootController')
 
 /* GET home page. */
-router.get('/', function(req, res) {
-    var articles = Article.findAll({
-        order: [["createdAt", "DESC"]]
-    }).complete(function(err, articles){
-        if(err) {
-            console.log("Can't get articles: " + err);
-        } else {
-            console.log('Articles loaded');
-            res.render('index', { articles: articles });
-        }
-    });
-});
+router.get('/', rootController.index);
 
 module.exports = router;
