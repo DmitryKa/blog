@@ -4,7 +4,9 @@ var Article = require('models/article')
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    var articles = Article.findAll().complete(function(err, articles){
+    var articles = Article.findAll({
+        order: [["createdAt", "DESC"]]
+    }).complete(function(err, articles){
         if(err) {
             console.log("Can't get articles: " + err);
         } else {
