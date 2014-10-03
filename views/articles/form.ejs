@@ -1,0 +1,13 @@
+<form role="form" action="create" method="post">
+    <div class="form-group">
+        <label for="title">Article title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" value="<%= typeof(title) == 'undefined' ? '' : title %>">
+    </div>
+    <div class="form-group">
+        <label for="text">Article content</label>
+        <textarea class="form-control" name="text" id="text" placeholder="Enter text"><%= typeof(text) == 'undefined' ? '' : text %></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-default">
+    </div>
+</form>
