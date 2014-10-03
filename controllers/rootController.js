@@ -6,6 +6,7 @@ exports.index = function(req, res) {
     }).complete(function(err, articles){
         if(err) {
             console.log("Can't get articles: " + err);
+            res.send(500, 'oops');
         } else {
             console.log('Articles loaded');
             res.render('index', { articles: articles });
