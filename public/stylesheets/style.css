@@ -11,3 +11,10 @@ a {
   margin: 0 auto;
   width: 800px;
 }
+.panel-header h3 {
+    display: inline-block;
+}
+
+.panel-buttons {
+    float: right;
+}

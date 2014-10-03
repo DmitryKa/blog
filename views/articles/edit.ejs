@@ -1,0 +1,5 @@
+<%- layout('../layout/application') -%>
+
+<form role="form" action="/articles/<%= id %>?_method=PUT" method="post">
+    <%- partial('_form_inside') -%>
+</form>

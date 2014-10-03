@@ -3,6 +3,8 @@ var router = express.Router();
 var articlesController = require('controllers/articlesController');
 
 router.get('/new', articlesController.new);
+router.get('/:article_id/edit', articlesController.edit);
 router.post('/', articlesController.create);
+router.put('/:article_id', articlesController.update);
 
 module.exports = router;

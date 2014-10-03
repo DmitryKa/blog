@@ -7,7 +7,12 @@
 <% for(i = 0; i < articles.length; i++) {%>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><div class="article-title"><strong><%= articles[i].title %></strong></div></h3>
+    <h3 class="panel-title">
+        <strong><%= articles[i].title %></strong>
+        <span class="panel-buttons">
+            <a href="articles/<%=articles[i].id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+        </span>
+    </h3>
   </div>
   <div class="panel-body">
     <div class="article-text"><%= articles[i].text %></div>
