@@ -4,13 +4,19 @@ exports.new = function (req, res){
     res.render('articles/new');
 };
 
-exports.edit = function(req, res) {
+exports.edit = function(req, res, next) {
     Article.find(req.params.article_id).complete(function(err, article){
         if(err) {
             console.log('Error on article searching: ' + err);
             res.send(500, 'oops');
         } else {
-            res.render('articles/edit', { id: article.id, title: article.title, text: article.text })
+            if(article == null) {
+                var err = {status: 404, message: 'Article not found' }
+                console.log(err.message);
+                next(err);
+            } else {
+                res.render('articles/edit', { id: article.id, title: article.title, text: article.text });
+            }
         }
     });
 };
@@ -35,7 +41,6 @@ exports.update = function(req, res, next) {
         complete(function(err, article){
             if(err){
                 console.log('Error on article updating: ' + err)
-
             } else {
                 if(article == null) {
                     err = 'Article is not found';
