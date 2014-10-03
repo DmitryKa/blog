@@ -1,4 +1,5 @@
 var Article = require('models/article');
+var log = require('logger');
 
 exports.new = function (req, res){
     res.render('articles/new');
@@ -7,12 +8,12 @@ exports.new = function (req, res){
 exports.edit = function(req, res, next) {
     Article.find(req.params.article_id).complete(function(err, article){
         if(err) {
-            console.log('Error on article searching: ' + err);
+            log.error('Error on article searching: ' + err);
             res.send(500, 'oops');
         } else {
             if(article == null) {
                 var err = {status: 404, message: 'Article not found' }
-                console.log(err.message);
+                log.error(err.message);
                 next(err);
             } else {
                 res.render('articles/edit', { id: article.id, title: article.title, text: article.text });
@@ -27,9 +28,9 @@ exports.create = function(req, res) {
         text: req.body.text
     }).complete(function(err){
         if(err){
-            console.log('Error on article creation: ' + err)
+            log.error('Error on article creation: ' + err)
         } else {
-            console.log('Article created');
+            log.debug('Article created');
             res.redirect('/');
         }
     });
@@ -40,11 +41,11 @@ exports.update = function(req, res, next) {
     Article.find(article_id).
         complete(function(err, article){
             if(err){
-                console.log('Error on article updating: ' + err)
+                log.error('Error on article updating: ' + err)
             } else {
                 if(article == null) {
                     err = 'Article is not found';
-                    console.log(err)
+                    log.debug(err)
                     next(err);
                 }else {
                     article.updateAttributes({
@@ -52,9 +53,9 @@ exports.update = function(req, res, next) {
                         text: req.body.text
                     }).complete(function(err){
                         if(err){
-                            console.log('Error on article updating: ' + err)
+                            log.error('Error on article updating: ' + err)
                             res.redirect('/');
-                        } else { console.log('Article updated'); }
+                        } else { log.debug('Article updated'); }
                         res.redirect('/');
                     })
 

@@ -1,4 +1,5 @@
 var dbConfig = require('config').get('db');
+var log = require('logger');
 
 var Sequelize = require('sequelize');
 
@@ -11,17 +12,17 @@ sequelize.
     authenticate().
     complete(function(err){
         if(err) {
-            console.log('Error on database connecting: '+err);
+            log.error('Error on database connecting: '+err);
         } else {
-            console.log('Connected to database');
+            log.info('Connected to database');
         }
     });
 
 sequelize.sync().complete(function(err){
     if(err){
-        console.log('Error occured on table creation: ' + err)
+        log.error('Error occured on table creation: ' + err)
     } else {
-        console.log('Database synchronized');
+        log.info('Database synchronized');
     }
 });
 
