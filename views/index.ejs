@@ -1,27 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="page-header">
-        <h1>Blog</h1>
-        <a href="/articles/new">New article</a>
-      </div>
-      <% for(i = 0; i < articles.length; i++) {%>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><div class="article-title"><strong><%= articles[i].title %></strong></div></h3>
-          </div>
-          <div class="panel-body">
-            <div class="article-text"><%= articles[i].text %></div>
-          </div>
-        </div>
-      <% } %>
-    </div>
+<%- layout('layout/application') -%>
 
-  </body>
-</html>
+<div class="page-header">
+<h1>Blog</h1>
+<a href="/articles/new">New article</a>
+</div>
+<% for(i = 0; i < articles.length; i++) {%>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><div class="article-title"><strong><%= articles[i].title %></strong></div></h3>
+  </div>
+  <div class="panel-body">
+    <div class="article-text"><%= articles[i].text %></div>
+  </div>
+</div>
+<% } %>
