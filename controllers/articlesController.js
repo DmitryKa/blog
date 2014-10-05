@@ -28,7 +28,7 @@ exports.create = function(req, res) {
         text: req.body.text
     }).complete(function(err){
         if(err){
-            log.error('Error on article creation: ' + err)
+            log.error('Error on article creation: ' + err);
         } else {
             log.debug('Article created');
             res.redirect('/');
@@ -45,7 +45,7 @@ exports.update = function(req, res, next) {
             } else {
                 if(article == null) {
                     err = 'Article is not found';
-                    log.debug(err)
+                    log.debug(err);
                     next(err);
                 }else {
                     article.updateAttributes({
@@ -53,7 +53,7 @@ exports.update = function(req, res, next) {
                         text: req.body.text
                     }).complete(function(err){
                         if(err){
-                            log.error('Error on article updating: ' + err)
+                            log.error('Error on article updating: ' + err);
                             res.redirect('/');
                         } else { log.debug('Article updated'); }
                         res.redirect('/');
