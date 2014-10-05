@@ -17,5 +17,8 @@
   <div class="panel-body">
     <div class="article-text"><%= articles[i].text %></div>
   </div>
+  <div class="panel-footer">
+    <div class="article-text"><%= articles[i].createdAt.toUTCString() %></div>
+  </div>
 </div>
 <% } %>
