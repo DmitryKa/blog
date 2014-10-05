@@ -11,6 +11,7 @@
         <strong><%= articles[i].title %></strong>
         <span class="panel-buttons">
             <a href="articles/<%=articles[i].id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+            <%- partial('_delete_button', { id: articles[i].id }) -%>
         </span>
     </h3>
   </div>

@@ -18,3 +18,12 @@ a {
 .panel-buttons {
     float: right;
 }
+
+.button-icon{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+}
+.button-icon{color: #e60000}
+.form-inline-my{display: inline;}

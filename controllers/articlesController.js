@@ -45,3 +45,16 @@ exports.update = function(req, res, next) {
 
         });
 };
+
+exports.delete = function(req, res, next) {
+    Article.find(req.params.article_id).complete(function(err, article){
+        if(err){ return next(new ServerError(500, 'Error on article deletion: ' + err)); }
+        if(article == null) { return next(new HttpError(404, 'Article not found')); }
+
+        article.destroy().complete(function(err){
+            if(err){ return next(new ServerError(500, 'Error on article deletion: ' + err)); }
+            log.debug('Article deleted');
+            res.redirect('/');
+        });
+    });
+}
